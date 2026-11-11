@@ -1,0 +1,955 @@
+/* =========================================================
+   DISKOP — Forgot Password
+   ========================================================= */
+
+.card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  /*
+   * THIS is the important part:
+   * make the card clearly different from the page background.
+   */
+  background: var(--mui-palette-background-paper) !important;
+
+  border: 1px solid
+  rgba(var(--mui-palette-dividerChannel), 0.85) !important;
+
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 32px 70px rgba(38, 43, 61, 0.09),
+    0 12px 28px rgba(38, 43, 61, 0.055),
+    0 2px 7px rgba(38, 43, 61, 0.04) !important;
+
+  animation:
+    cardEnter 0.7s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+
+  transition:
+    transform 0.45s
+    cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s ease,
+    border-color 0.35s ease;
+}
+
+/* Soft light inside the card */
+.card::before {
+  content: '';
+
+  position: absolute;
+  z-index: -1;
+
+  width: 280px;
+  height: 280px;
+
+  top: -190px;
+  right: -130px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(var(--mui-palette-primary-mainChannel), 0.09) 0%,
+      rgba(var(--mui-palette-primary-mainChannel), 0.035) 38%,
+      transparent 70%
+    );
+
+  filter: blur(4px);
+
+  pointer-events: none;
+
+  animation:
+    ambientMove 8s ease-in-out infinite;
+}
+
+/* Bottom subtle atmosphere */
+.card::after {
+  content: '';
+
+  position: absolute;
+  z-index: -1;
+
+  width: 220px;
+  height: 220px;
+
+  bottom: -170px;
+  left: -120px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(var(--mui-palette-primary-mainChannel), 0.055),
+      transparent 70%
+    );
+
+  pointer-events: none;
+
+  animation:
+    ambientMoveReverse 10s ease-in-out infinite;
+}
+
+/* Thin premium highlight */
+.cardTopLine {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 0;
+  left: 10%;
+
+  width: 80%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--mui-palette-primary-mainChannel), 0.35),
+      transparent
+    );
+
+  opacity: 0.9;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(var(--mui-palette-primary-mainChannel), 0.16) !important;
+
+  box-shadow:
+    0 38px 80px rgba(38, 43, 61, 0.105),
+    0 15px 35px rgba(38, 43, 61, 0.06),
+    0 0 0 1px
+    rgba(var(--mui-palette-primary-mainChannel), 0.025) !important;
+}
+
+
+/* =========================================================
+   Content
+   ========================================================= */
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   Logo
+   ========================================================= */
+
+.logo {
+  position: relative;
+
+  animation:
+    fadeDown 0.65s 0.08s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+
+  filter:
+    drop-shadow(
+      0 8px 16px
+      rgba(var(--mui-palette-primary-mainChannel), 0.14)
+    );
+}
+
+
+/* =========================================================
+   Header
+   ========================================================= */
+
+.header {
+  animation:
+    fadeUp 0.65s 0.16s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 10px;
+
+  color:
+    rgba(var(--mui-palette-primary-mainChannel), 0.85);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+}
+
+.eyebrowIcon {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(var(--mui-palette-primary-mainChannel), 0.09);
+
+  color:
+    var(--mui-palette-primary-main);
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.eyebrowIcon i {
+  font-size: 14px;
+}
+
+.header:hover .eyebrowIcon {
+  transform: rotate(-6deg) scale(1.06);
+
+  background:
+    rgba(var(--mui-palette-primary-mainChannel), 0.13);
+}
+
+
+/*
+ * IMPORTANT:
+ * Do NOT use transparent gradient text here.
+ * The previous version made the title disappear.
+ */
+.title {
+  color: var(--mui-palette-text-primary) !important;
+
+  font-weight: 700 !important;
+
+  letter-spacing: -0.035em;
+
+  line-height: 1.2 !important;
+}
+
+.description {
+  max-width: 375px;
+
+  color: var(--mui-palette-text-secondary);
+
+  line-height: 1.7 !important;
+}
+
+
+/* =========================================================
+   Form
+   ========================================================= */
+
+.form {
+  animation:
+    fadeUp 0.65s 0.24s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.fieldWrapper {
+  position: relative;
+
+  transition:
+    transform 0.3s
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fieldWrapper:focus-within {
+  transform: translateY(-2px);
+}
+
+.fieldWrapper :global(.MuiOutlinedInput-root) {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.fieldWrapper :global(.MuiOutlinedInput-root:hover) {
+  border-color:
+    rgba(var(--mui-palette-primary-mainChannel), 0.4);
+}
+
+.fieldWrapper :global(.MuiOutlinedInput-root.Mui-focused) {
+  box-shadow:
+    0 0 0 3px
+    rgba(var(--mui-palette-primary-mainChannel), 0.075),
+    0 7px 20px
+    rgba(var(--mui-palette-primary-mainChannel), 0.055);
+}
+
+.fieldHint {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 7px;
+  padding-inline-start: 3px;
+
+  color: var(--mui-palette-text-secondary);
+
+  font-size: 11px;
+
+  animation:
+    fadeHint 0.3s ease both;
+}
+
+.fieldHint i {
+  color: var(--mui-palette-primary-main);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   Error
+   ========================================================= */
+
+.fieldError {
+  animation:
+    errorGlow 0.55s ease;
+}
+
+.fieldError :global(.MuiOutlinedInput-root) {
+  animation:
+    inputShake 0.5s
+    cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+
+/* =========================================================
+   Button
+   ========================================================= */
+
+.button {
+  position: relative;
+
+  min-height: 48px;
+
+  overflow: hidden;
+
+  border-radius: 9px !important;
+
+  font-weight: 650 !important;
+
+  letter-spacing: 0.01em;
+
+  box-shadow:
+    0 10px 24px
+    rgba(var(--mui-palette-primary-mainChannel), 0.19) !important;
+
+  transition:
+    transform 0.3s
+    cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease,
+    filter 0.3s ease !important;
+}
+
+.button::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.04),
+      transparent 35%,
+      rgba(255, 255, 255, 0.07)
+    );
+
+  pointer-events: none;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(1.025);
+
+  box-shadow:
+    0 14px 30px
+    rgba(var(--mui-palette-primary-mainChannel), 0.27) !important;
+}
+
+.button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.button:disabled {
+  opacity: 0.8;
+
+  cursor: wait;
+}
+
+.buttonShine {
+  position: absolute;
+
+  top: -100%;
+  left: -55%;
+
+  width: 35%;
+  height: 300%;
+
+  transform: rotate(25deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.23),
+      transparent
+    );
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    left 0.7s ease,
+    opacity 0.25s ease;
+}
+
+.button:hover .buttonShine {
+  left: 125%;
+
+  opacity: 1;
+}
+
+.buttonContent {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.buttonArrow {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  margin-inline-start: 8px;
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  transition:
+    transform 0.3s
+    cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease;
+}
+
+.button:hover .buttonArrow {
+  transform:
+    translate(3px, -2px);
+
+  background: rgba(255, 255, 255, 0.19);
+}
+
+
+/* =========================================================
+   Loading
+   ========================================================= */
+
+.loadingContent {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+}
+
+.loader {
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+}
+
+.loader span {
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+
+  animation:
+    loaderBounce 0.9s infinite ease-in-out;
+}
+
+.loader span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.loader span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+
+/* =========================================================
+   Back
+   ========================================================= */
+
+.back {
+  animation:
+    fadeUp 0.65s 0.32s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.backLink {
+  font-weight: 500;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.25s ease;
+}
+
+.backLink:hover {
+  transform: translateX(-2px);
+
+  opacity: 0.82;
+}
+
+.backIcon {
+  display: inline-flex;
+
+  transition:
+    transform 0.3s
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.backLink:hover .backIcon {
+  transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   Security
+   ========================================================= */
+
+.securityCard {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-top: 27px;
+
+  padding: 12px 13px;
+
+  border: 1px solid
+  rgba(var(--mui-palette-dividerChannel), 0.7);
+
+  border-radius: 10px;
+
+  background:
+    rgba(var(--mui-palette-actionHoverChannel), 0.35);
+
+  animation:
+    fadeUp 0.65s 0.38s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.securityCard:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(var(--mui-palette-primary-mainChannel), 0.18);
+
+  box-shadow:
+    0 8px 20px
+    rgba(var(--mui-palette-primary-mainChannel), 0.055);
+}
+
+.securityIcon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 9px;
+
+  color: var(--mui-palette-primary-main);
+
+  background:
+    rgba(var(--mui-palette-primary-mainChannel), 0.09);
+
+  transition:
+    transform 0.3s ease;
+}
+
+.securityCard:hover .securityIcon {
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.securityIcon i {
+  font-size: 18px;
+}
+
+.securityContent {
+  display: flex;
+
+  flex: 1;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.securityTitle {
+  color: var(--mui-palette-text-primary);
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.securityDescription {
+  color: var(--mui-palette-text-secondary);
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+.securityStatus {
+  width: 6px;
+  height: 6px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--mui-palette-success-main);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(var(--mui-palette-success-mainChannel), 0.08);
+
+  animation:
+    statusPulse 2.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
+.footer {
+  opacity: 0.65;
+
+  line-height: 1.6 !important;
+
+  animation:
+    fadeUp 0.65s 0.44s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.footerDivider {
+  margin-inline: 5px;
+
+  opacity: 0.5;
+}
+
+
+/* =========================================================
+   Shake
+   ========================================================= */
+
+.shake {
+  animation:
+    cardShake 0.55s
+    cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+
+/* =========================================================
+   Animations
+   ========================================================= */
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.97);
+
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(11px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+
+    transform: translateY(-9px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes ambientMove {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-20px, 15px) scale(1.08);
+  }
+}
+
+@keyframes ambientMoveReverse {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(15px, -12px) scale(1.06);
+  }
+}
+
+@keyframes fadeHint {
+  from {
+    opacity: 0;
+
+    transform: translateY(-3px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes loaderBounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+
+    opacity: 0.45;
+  }
+
+  30% {
+    transform: translateY(-4px);
+
+    opacity: 1;
+  }
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px
+      rgba(var(--mui-palette-success-mainChannel), 0.07);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 6px
+      rgba(var(--mui-palette-success-mainChannel), 0.02);
+  }
+}
+
+@keyframes inputShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-5px);
+  }
+
+  40% {
+    transform: translateX(4px);
+  }
+
+  60% {
+    transform: translateX(-3px);
+  }
+
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes errorGlow {
+  0%,
+  100% {
+    filter: none;
+  }
+
+  45% {
+    filter:
+      drop-shadow(
+        0 0 9px
+        rgba(var(--mui-palette-error-mainChannel), 0.14)
+      );
+  }
+}
+
+@keyframes cardShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  15% {
+    transform: translateX(-5px);
+  }
+
+  30% {
+    transform: translateX(4px);
+  }
+
+  45% {
+    transform: translateX(-3px);
+  }
+
+  60% {
+    transform: translateX(2px);
+  }
+
+  75% {
+    transform: translateX(-1px);
+  }
+}
+
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 599px) {
+  .card {
+    border-radius: 15px !important;
+
+    box-shadow:
+      0 20px 45px rgba(38, 43, 61, 0.075),
+      0 7px 18px rgba(38, 43, 61, 0.04) !important;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .securityCard {
+    padding: 11px;
+  }
+}
+
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .logo,
+  .header,
+  .form,
+  .back,
+  .securityCard,
+  .card::before,
+  .card::after,
+  .securityStatus {
+    animation: none !important;
+  }
+
+  .buttonShine {
+    display: none;
+  }
+
+  .card,
+  .button,
+  .fieldWrapper,
+  .securityCard {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,373 @@
+.card {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid
+  var(--mui-palette-divider);
+
+  border-radius: 14px !important;
+
+  background:
+    var(--mui-palette-background-paper);
+
+  box-shadow:
+    0 2px 8px rgb(0 0 0 / 3%);
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+
+  border-color: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 20%,
+    var(--mui-palette-divider)
+  );
+
+  box-shadow:
+    0 10px 28px rgb(0 0 0 / 7%);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Accent                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.accent {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  opacity: 0.8;
+}
+
+.accent-success {
+  background:
+    var(--mui-palette-success-main);
+}
+
+.accent-primary {
+  background:
+    var(--mui-palette-primary-main);
+}
+
+.accent-info {
+  background:
+    var(--mui-palette-info-main);
+}
+
+.accent-warning {
+  background:
+    var(--mui-palette-warning-main);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Content                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.content {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 154px;
+
+  padding: 20px !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Top                                                                        */
+/* -------------------------------------------------------------------------- */
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+}
+
+.iconWrapper {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  font-size: 22px;
+
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.card:hover .iconWrapper {
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Icon Colors                                                                */
+/* -------------------------------------------------------------------------- */
+
+.icon-success {
+  color:
+    var(--mui-palette-success-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-success-main) 10%,
+    transparent
+  );
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--mui-palette-success-main) 14%,
+    var(--mui-palette-divider)
+  );
+}
+
+.icon-primary {
+  color:
+    var(--mui-palette-primary-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 10%,
+    transparent
+  );
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 14%,
+    var(--mui-palette-divider)
+  );
+}
+
+.icon-info {
+  color:
+    var(--mui-palette-info-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-info-main) 10%,
+    transparent
+  );
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--mui-palette-info-main) 14%,
+    var(--mui-palette-divider)
+  );
+}
+
+.icon-warning {
+  color:
+    var(--mui-palette-warning-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-warning-main) 10%,
+    transparent
+  );
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--mui-palette-warning-main) 14%,
+    var(--mui-palette-divider)
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Label                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.label {
+  padding: 4px 7px;
+
+  border-radius: 5px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.07em;
+
+  line-height: 1;
+
+  opacity: 0.85;
+}
+
+.label-success {
+  color:
+    var(--mui-palette-success-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-success-main) 7%,
+    transparent
+  );
+}
+
+.label-primary {
+  color:
+    var(--mui-palette-primary-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 7%,
+    transparent
+  );
+}
+
+.label-info {
+  color:
+    var(--mui-palette-info-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-info-main) 7%,
+    transparent
+  );
+}
+
+.label-warning {
+  color:
+    var(--mui-palette-warning-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-warning-main) 7%,
+    transparent
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Information                                                                */
+/* -------------------------------------------------------------------------- */
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 13px !important;
+
+  font-weight: 500 !important;
+}
+
+.valueRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-top: 2px;
+}
+
+.value {
+  font-weight: 700 !important;
+
+  line-height: 1.15 !important;
+
+  letter-spacing: -0.02em;
+}
+
+.description {
+  margin-top: 4px;
+
+  font-size: 11px !important;
+
+  line-height: 1.4 !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Live Indicator                                                             */
+/* -------------------------------------------------------------------------- */
+
+.liveIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 3px 7px;
+
+  border-radius: 5px;
+
+  color:
+    var(--mui-palette-success-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-success-main) 8%,
+    transparent
+  );
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.liveDot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 999px;
+
+  background:
+    var(--mui-palette-success-main);
+
+  box-shadow:
+    0 0 0 3px color-mix(
+      in srgb,
+      var(--mui-palette-success-main) 12%,
+      transparent
+    );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive                                                                 */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .content {
+    min-height: 140px;
+
+    padding: 17px !important;
+  }
+
+  .top {
+    margin-bottom: 13px;
+  }
+
+  .iconWrapper {
+    width: 42px;
+    height: 42px;
+
+    font-size: 20px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reduced Motion                                                             */
+/* -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .iconWrapper {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:hover .iconWrapper {
+    transform: none;
+  }
+}

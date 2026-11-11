@@ -1,0 +1,789 @@
+.page {
+  --primary: var(--mui-palette-primary-main);
+  --primary-channel: var(--mui-palette-primary-mainChannel);
+
+  position: relative;
+
+  min-block-size: 100dvh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  padding: 32px 24px 24px;
+
+  background:
+    var(--mui-palette-background-default);
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   Background
+   ========================================================= */
+
+.backgroundGlow {
+  position: absolute;
+
+  z-index: -2;
+
+  width: 620px;
+  height: 420px;
+
+  top: 25%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(var(--primary-channel), 0.055) 0%,
+      rgba(var(--primary-channel), 0.02) 40%,
+      transparent 72%
+    );
+
+  filter: blur(18px);
+
+  pointer-events: none;
+
+  animation:
+    glowPulse 7s ease-in-out infinite;
+}
+
+.backgroundGrid {
+  position: absolute;
+
+  z-index: -3;
+
+  inset: 0;
+
+  opacity: 0.2;
+
+  background-image:
+    linear-gradient(
+      rgba(var(--primary-channel), 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--primary-channel), 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 56px 56px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      transparent 65%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   Main Container
+   ========================================================= */
+
+.container {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  flex-direction: column;
+
+  width: min(100%, 760px);
+
+  text-align: center;
+
+  margin-top: -20px;
+}
+
+
+/* =========================================================
+   Logo
+   ========================================================= */
+
+.logo {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 28px;
+
+  animation:
+    fadeDown 0.55s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.85;
+}
+
+
+/* =========================================================
+   404 Number
+   ========================================================= */
+
+.errorNumber {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 150px;
+
+  margin-bottom: 18px;
+
+  color: var(--mui-palette-text-primary);
+
+  font-size: clamp(105px, 15vw, 150px);
+
+  font-weight: 800;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.09em;
+
+  animation:
+    errorReveal 0.7s 0.08s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.errorNumber > span:not(.errorZero) {
+  text-shadow:
+    0 10px 25px
+    rgba(0, 0, 0, 0.045);
+}
+
+
+/* =========================================================
+   Zero / Search Icon
+   ========================================================= */
+
+.errorZero {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 112px;
+  height: 112px;
+
+  margin-inline: 8px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(var(--primary-channel), 0.11),
+      rgba(var(--primary-channel), 0.035) 62%,
+      transparent 72%
+    );
+}
+
+.errorZero::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 7px;
+
+  border: 1px solid
+  rgba(var(--primary-channel), 0.15);
+
+  border-radius: 50%;
+
+  animation:
+    zeroPulse 3.5s ease-in-out infinite;
+}
+
+.errorZeroInner {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 62px;
+  height: 62px;
+
+  border-radius: 50%;
+
+  color: var(--primary);
+
+  background:
+    var(--mui-palette-background-paper);
+
+  border: 1px solid
+  rgba(var(--primary-channel), 0.12);
+
+  box-shadow:
+    0 10px 25px
+    rgba(var(--primary-channel), 0.08);
+
+  animation:
+    zeroFloat 4s ease-in-out infinite;
+}
+
+.errorZeroInner i {
+  font-size: 27px;
+}
+
+
+/* =========================================================
+   Content
+   ========================================================= */
+
+.content {
+  display: flex;
+
+  align-items: center;
+
+  flex-direction: column;
+
+  animation:
+    fadeUp 0.65s 0.18s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.title {
+  color: var(--mui-palette-text-primary) !important;
+
+  font-size: clamp(25px, 3vw, 34px) !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.2 !important;
+
+  letter-spacing: -0.035em;
+
+  margin-bottom: 10px;
+}
+
+.description {
+  max-width: 470px;
+
+  color: var(--mui-palette-text-secondary);
+
+  font-size: 14px;
+
+  line-height: 1.7 !important;
+}
+
+
+/* =========================================================
+   Button
+   ========================================================= */
+
+.homeButton {
+  position: relative;
+
+  min-width: 190px;
+
+  min-height: 46px;
+
+  margin-top: 23px;
+
+  overflow: hidden;
+
+  border-radius: 9px !important;
+
+  font-weight: 600 !important;
+
+  box-shadow:
+    0 8px 20px
+    rgba(var(--primary-channel), 0.18) !important;
+
+  transition:
+    transform 0.3s
+    cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease !important;
+}
+
+.homeButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 27px
+    rgba(var(--primary-channel), 0.25) !important;
+}
+
+.homeButton:active {
+  transform: scale(0.98);
+}
+
+.buttonContent {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+}
+
+.buttonArrow {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  margin-inline-start: 2px;
+
+  border-radius: 6px;
+
+  background:
+    rgba(255, 255, 255, 0.13);
+
+  font-size: 15px;
+
+  transition:
+    transform 0.3s
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.homeButton:hover .buttonArrow {
+  transform:
+    translate(2px, -2px);
+}
+
+.buttonShine {
+  position: absolute;
+
+  top: -80%;
+  left: -45%;
+
+  width: 30%;
+  height: 260%;
+
+  transform: rotate(25deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.22),
+      transparent
+    );
+
+  pointer-events: none;
+
+  transition:
+    left 0.7s ease;
+}
+
+.homeButton:hover .buttonShine {
+  left: 125%;
+}
+
+
+/* =========================================================
+   Illustration
+   ========================================================= */
+
+.illustrationArea {
+  position: relative;
+
+  width: min(100%, 440px);
+
+  height: 235px;
+
+  margin-top: 10px;
+
+  animation:
+    illustrationReveal 0.8s 0.28s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.illustrationGlow {
+  position: absolute;
+
+  left: 50%;
+  bottom: 22px;
+
+  width: 280px;
+  height: 100px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(var(--primary-channel), 0.09),
+      transparent 70%
+    );
+
+  filter: blur(15px);
+
+  animation:
+    illustrationGlow 4s ease-in-out infinite;
+}
+
+.illustration {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  height: 225px;
+
+  width: auto;
+
+  max-width: 90%;
+
+  object-fit: contain;
+
+  transform: translateX(-50%);
+
+  filter:
+    drop-shadow(
+      0 16px 22px
+      rgba(0, 0, 0, 0.075)
+    );
+
+  animation:
+    characterFloat 4.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
+.footer {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 0;
+
+  color: var(--mui-palette-text-secondary);
+
+  font-size: 11px;
+
+  opacity: 0.7;
+
+  animation:
+    fadeUp 0.6s 0.4s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.footerDot {
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: var(--mui-palette-divider);
+}
+
+
+/* =========================================================
+   Mask
+   ========================================================= */
+
+.mask {
+  opacity: 0.38;
+
+  pointer-events: none;
+
+  animation:
+    maskReveal 1s 0.2s ease both;
+}
+
+
+/* =========================================================
+   Animations
+   ========================================================= */
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes errorReveal {
+  from {
+    opacity: 0;
+    transform:
+      translateY(18px)
+      scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes illustrationReveal {
+  from {
+    opacity: 0;
+    transform:
+      translateY(20px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes characterFloat {
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      translateY(-6px);
+  }
+}
+
+@keyframes illustrationGlow {
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      scale(0.92);
+
+    opacity: 0.65;
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      scale(1.05);
+
+    opacity: 0.9;
+  }
+}
+
+@keyframes zeroFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes zeroPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.02);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.65;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.05);
+  }
+}
+
+@keyframes maskReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 0.38;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 899px) {
+  .container {
+    margin-top: 0;
+  }
+
+  .illustrationArea {
+    height: 210px;
+  }
+
+  .illustration {
+    height: 200px;
+  }
+}
+
+@media (max-width: 599px) {
+  .page {
+    padding:
+      25px
+      18px
+      20px;
+  }
+
+  .logo {
+    margin-bottom: 22px;
+  }
+
+  .errorNumber {
+    height: 105px;
+
+    font-size: 90px;
+
+    margin-bottom: 15px;
+  }
+
+  .errorZero {
+    width: 72px;
+    height: 72px;
+
+    margin-inline: 5px;
+  }
+
+  .errorZeroInner {
+    width: 43px;
+    height: 43px;
+  }
+
+  .errorZeroInner i {
+    font-size: 19px;
+  }
+
+  .description {
+    max-width: 340px;
+  }
+
+  .illustrationArea {
+    height: 175px;
+
+    margin-top: 5px;
+  }
+
+  .illustration {
+    height: 170px;
+  }
+
+  .footer {
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    text-align: center;
+  }
+}
+
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .logo,
+  .errorNumber,
+  .content,
+  .illustrationArea,
+  .illustration,
+  .illustrationGlow,
+  .errorZero,
+  .errorZeroInner,
+  .backgroundGlow,
+  .footer,
+  .mask {
+    animation: none !important;
+  }
+
+  .homeButton,
+  .logo {
+    transition: none !important;
+  }
+
+  .buttonShine {
+    display: none;
+  }
+}

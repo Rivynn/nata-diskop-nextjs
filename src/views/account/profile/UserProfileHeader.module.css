@@ -1,0 +1,1110 @@
+/* =========================================================
+   PROFILE HERO
+   ========================================================= */
+
+.profileHero {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: 16px;
+
+  background: var(--mui-palette-background-paper);
+
+  box-shadow:
+    0 14px 45px rgba(0, 0, 0, 0.05);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.profileHero:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   COVER
+   ========================================================= */
+
+.profileCover {
+  position: relative;
+
+  height: 175px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      125deg,
+      var(--mui-palette-primary-dark) 0%,
+      var(--mui-palette-primary-main) 48%,
+      var(--mui-palette-primary-light) 100%
+    );
+}
+
+
+/* =========================================================
+   AMBIENT GLOW
+   ========================================================= */
+
+.profileGlowPrimary {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -250px;
+  right: -100px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0) 68%
+    );
+
+  animation:
+    profileGlowFloat
+    8s
+    ease-in-out
+    infinite;
+}
+
+.profileGlowSecondary {
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  bottom: -260px;
+  left: -80px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+
+  animation:
+    profileGlowFloatReverse
+    10s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   COVER GRID
+   ========================================================= */
+
+.profileCoverGrid {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.1;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.18) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.18) 1px,
+      transparent 1px
+    );
+
+  background-size: 34px 34px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 95%
+    );
+}
+
+
+/* =========================================================
+   FLOATING PARTICLES
+   ========================================================= */
+
+.profileParticle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.8);
+
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.5);
+
+  animation:
+    profileParticleFloat
+    4s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   ORBIT
+   ========================================================= */
+
+.profileOrbit {
+  position: absolute;
+
+  width: 300px;
+  height: 120px;
+
+  right: 40px;
+  top: 30px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.14);
+
+  border-radius: 50%;
+
+  transform: rotate(-18deg);
+
+  animation:
+    profileOrbit
+    14s
+    linear
+    infinite;
+}
+
+.profileOrbitSecondary {
+  position: absolute;
+
+  width: 250px;
+  height: 100px;
+
+  right: 65px;
+  top: 40px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 50%;
+
+  transform: rotate(28deg);
+
+  animation:
+    profileOrbitReverse
+    18s
+    linear
+    infinite;
+}
+
+
+/* =========================================================
+   PROFILE BODY
+   ========================================================= */
+
+.profileBody {
+  position: relative;
+
+  padding:
+    0
+    48px
+    48px;
+}
+
+
+/* =========================================================
+   PROFILE IDENTITY
+   ========================================================= */
+
+.profileIdentity {
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  flex-direction: row;
+
+  gap: 32px;
+
+  /*
+   * Avatar tetap overlap antara
+   * cover dan area putih.
+   */
+  margin-top: -64px;
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.profileAvatarWrapper {
+  position: relative;
+
+  flex-shrink: 0;
+
+  animation:
+    profileAvatarIn
+    0.85s
+    cubic-bezier(0.2, 0.8, 0.2, 1)
+    both;
+}
+
+.profileAvatarHalo {
+  position: absolute;
+
+  inset: -12px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 30%,
+      transparent
+    );
+
+  animation:
+    profileHalo
+    4s
+    ease-in-out
+    infinite;
+}
+
+.profileAvatarRing {
+  position: absolute;
+
+  inset: -7px;
+
+  border-radius: 50%;
+
+  border:
+    1px dashed
+    var(--mui-palette-primary-main);
+
+  opacity: 0.5;
+
+  animation:
+    profileRing
+    16s
+    linear
+    infinite;
+}
+
+.profileAvatar {
+  position: relative;
+
+  width: 132px !important;
+  height: 132px !important;
+
+  border:
+    5px solid
+    var(--mui-palette-background-paper);
+
+  background:
+    var(--mui-palette-primary-main);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.13);
+
+  font-size: 2rem;
+  font-weight: 700;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.profileAvatar:hover {
+  transform: scale(1.04);
+
+  box-shadow:
+    0 16px 42px rgba(0, 0, 0, 0.16);
+}
+
+.profileAvatarStatus {
+  position: absolute;
+
+  right: 4px;
+  bottom: 7px;
+
+  width: 21px;
+  height: 21px;
+
+  border:
+    4px solid
+    var(--mui-palette-background-paper);
+
+  border-radius: 50%;
+
+  background:
+    var(--mui-palette-success-main);
+
+  box-shadow:
+    0 0 0 4px
+    color-mix(
+      in srgb,
+      var(--mui-palette-success-main) 13%,
+      transparent
+    );
+
+  animation:
+    profileStatusPulse
+    2.5s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   IDENTITY CONTENT
+   ========================================================= */
+
+.profileIdentityContent {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+
+  /*
+   * Nama, username, dan meta diturunkan
+   * ke area putih.
+   */
+  top: 58px;
+
+  padding-bottom: 8px;
+
+  animation:
+    profileContentIn
+    0.8s
+    0.15s
+    ease
+    both;
+}
+
+.profileNameRow {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.profileName {
+  margin: 0;
+
+  font-size:
+    clamp(1.6rem, 3vw, 2.15rem);
+
+  font-weight: 800;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
+
+  color:
+    var(--mui-palette-text-primary);
+}
+
+.profileVerified {
+  flex-shrink: 0;
+
+  color:
+    var(--mui-palette-primary-main);
+
+  font-size: 22px;
+
+  animation:
+    profileVerified
+    0.8s
+    0.7s
+    ease
+    both;
+}
+
+.profileUsername {
+  display: block;
+
+  margin-top: 6px;
+
+  color:
+    var(--mui-palette-text-secondary);
+
+  font-size: 0.875rem;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   PROFILE META
+   ========================================================= */
+
+.profileMeta {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 20px;
+
+  margin-top: 20px;
+}
+
+.profileMetaItem {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color:
+    var(--mui-palette-text-secondary);
+
+  font-size: 0.82rem;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.profileMetaItem:hover {
+  color:
+    var(--mui-palette-primary-main);
+
+  transform:
+    translateY(-2px);
+}
+
+.profileMetaIcon {
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.profileStatus {
+  align-self: flex-end;
+
+  flex-shrink: 0;
+
+  padding-bottom: 8px;
+
+  animation:
+    profileStatusIn
+    0.7s
+    0.3s
+    ease
+    both;
+}
+
+.profileStatusChip {
+  height: 34px;
+
+  padding-inline: 8px;
+
+  border-radius: 8px;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.profileStatusChip:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 6px 18px
+    color-mix(
+      in srgb,
+      var(--mui-palette-success-main) 12%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.profileDivider {
+  margin-block:
+    32px 36px;
+
+  animation:
+    profileDivider
+    0.8s
+    0.35s
+    ease
+    both;
+}
+
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.profileSummary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 0;
+
+  animation:
+    profileSummaryIn
+    0.8s
+    0.45s
+    ease
+    both;
+}
+
+.profileSummaryItem {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  min-width: 0;
+
+  padding:
+    0
+    32px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.profileSummaryItem:first-child {
+  padding-left: 0;
+}
+
+.profileSummaryItemBordered {
+  border-left:
+    1px solid
+    var(--mui-palette-divider);
+}
+
+.profileSummaryItem:hover {
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   SUMMARY ICON
+   ========================================================= */
+
+.profileSummaryIcon {
+  display: grid;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  place-items: center;
+
+  border-radius: 10px;
+
+  background:
+    var(--mui-palette-action-hover);
+
+  color:
+    var(--mui-palette-text-secondary);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.profileSummaryIcon i {
+  font-size: 20px;
+}
+
+.profileSummaryItem:hover
+.profileSummaryIcon {
+  background:
+    var(--mui-palette-primary-main);
+
+  color:
+    var(--mui-palette-primary-contrastText);
+
+  transform:
+    scale(1.06);
+}
+
+
+/* =========================================================
+   SUMMARY CONTENT
+   ========================================================= */
+
+.profileSummaryContent {
+  min-width: 0;
+}
+
+.profileSummaryLabel {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color:
+    var(--mui-palette-text-secondary);
+
+  font-size: 0.7rem;
+
+  font-weight: 500;
+}
+
+.profileSummaryValue {
+  display: block;
+
+  overflow: hidden;
+
+  color:
+    var(--mui-palette-text-primary);
+
+  font-size: 0.875rem;
+
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.profileSummaryValueSuccess {
+  color:
+    var(--mui-palette-success-main);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes profileGlowFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(-35px, 25px, 0)
+      scale(1.08);
+  }
+}
+
+@keyframes profileGlowFloatReverse {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(25px, -20px, 0)
+      scale(1.1);
+  }
+}
+
+@keyframes profileParticleFloat {
+  0%,
+  100% {
+    opacity: 0.2;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+
+    transform:
+      translateY(-12px)
+      scale(1.35);
+  }
+}
+
+@keyframes profileOrbit {
+  from {
+    transform:
+      rotate(-18deg);
+  }
+
+  to {
+    transform:
+      rotate(342deg);
+  }
+}
+
+@keyframes profileOrbitReverse {
+  from {
+    transform:
+      rotate(28deg);
+  }
+
+  to {
+    transform:
+      rotate(-332deg);
+  }
+}
+
+@keyframes profileAvatarIn {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.82);
+
+    filter:
+      blur(8px);
+  }
+
+  70% {
+    opacity: 1;
+
+    transform:
+      translateY(-3px)
+      scale(1.02);
+
+    filter:
+      blur(0);
+  }
+
+  100% {
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes profileContentIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+}
+
+@keyframes profileStatusIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px)
+      scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes profileVerified {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(0.4)
+      rotate(-20deg);
+  }
+
+  70% {
+    transform:
+      scale(1.15)
+      rotate(5deg);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotate(0);
+  }
+}
+
+@keyframes profileHalo {
+  0%,
+  100% {
+    opacity: 0.35;
+
+    transform:
+      scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+
+    transform:
+      scale(1.08);
+  }
+}
+
+@keyframes profileRing {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+@keyframes profileStatusPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px
+      rgba(46, 125, 50, 0.12);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 8px
+      rgba(46, 125, 50, 0.04);
+  }
+}
+
+@keyframes profileDivider {
+  from {
+    opacity: 0;
+
+    transform:
+      scaleX(0);
+
+    transform-origin:
+      left;
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scaleX(1);
+
+    transform-origin:
+      left;
+  }
+}
+
+@keyframes profileSummaryIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 899px) {
+  .profileCover {
+    height: 175px;
+  }
+
+  .profileBody {
+    padding-inline: 32px;
+  }
+
+  .profileIdentity {
+    align-items: center;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+    margin-top: -64px;
+
+    text-align: center;
+  }
+
+  .profileIdentityContent {
+    width: 100%;
+
+    /*
+     * Reset posisi desktop.
+     */
+    position: static;
+
+    padding-bottom: 0;
+  }
+
+  .profileNameRow {
+    justify-content: center;
+  }
+
+  .profileMeta {
+    justify-content: center;
+  }
+
+  .profileStatus {
+    align-self: center;
+
+    padding-bottom: 0;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 599px) {
+  .profileHero {
+    border-radius: 14px;
+  }
+
+  .profileCover {
+    height: 150px;
+  }
+
+  .profileBody {
+    padding-inline: 20px;
+    padding-bottom: 24px;
+  }
+
+  .profileAvatarWrapper {
+    transform-origin: center;
+  }
+
+  .profileAvatar {
+    width: 116px !important;
+    height: 116px !important;
+  }
+
+  .profileName {
+    font-size: 1.5rem;
+  }
+
+  .profileMeta {
+    gap: 12px 18px;
+  }
+
+  .profileMetaItem {
+    font-size: 0.76rem;
+  }
+
+  .profileSummary {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .profileSummaryItem {
+    padding:
+      0;
+  }
+
+  .profileSummaryItemBordered {
+    padding-top: 18px;
+
+    border-top:
+      1px solid
+      var(--mui-palette-divider);
+
+    border-left: 0;
+  }
+
+  .profileDivider {
+    margin-block:
+      28px 24px;
+  }
+
+  .profileOrbit {
+    right: -100px;
+  }
+
+  .profileOrbitSecondary {
+    right: -70px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .profileHero *,
+  .profileHero {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.profileAvatarWrapper {
+  position: relative;
+
+  flex-shrink: 0;
+
+  /*
+   * Turunkan seluruh avatar,
+   * termasuk halo, ring, dan status.
+   */
+  top: 44px;
+
+  animation:
+    profileAvatarIn
+    0.85s
+    cubic-bezier(0.2, 0.8, 0.2, 1)
+    both;
+}

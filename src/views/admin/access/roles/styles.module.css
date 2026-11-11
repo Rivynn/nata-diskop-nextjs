@@ -1,0 +1,557 @@
+.roleCardWrapper {
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
+  height: 100%;
+  perspective: 1200px;
+}
+
+.roleCard {
+  --role-color: #16805a;
+  --role-soft: rgba(22, 128, 90, 0.1);
+  --role-border: rgba(22, 128, 90, 0.24);
+  --role-glow: rgba(22, 128, 90, 0.16);
+  --role-shadow: rgba(22, 128, 90, 0.18);
+
+  position: relative;
+  height: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(0, 0, 0, 0.07);
+
+  transform:
+    translateY(0)
+    rotateX(var(--rotate-x))
+    rotateY(var(--rotate-y));
+
+  transform-style: preserve-3d;
+
+  will-change: transform;
+
+  transition:
+    transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+.roleCard:hover {
+  border-color: var(--role-border);
+
+  box-shadow:
+    0 20px 45px rgba(31, 41, 55, 0.1),
+    0 8px 18px var(--role-shadow);
+}
+
+/* =========================================
+   ROLE COLORS
+========================================= */
+
+.roleCardADMIN {
+  --role-color: #16805a;
+  --role-soft: rgba(22, 128, 90, 0.1);
+  --role-border: rgba(22, 128, 90, 0.28);
+  --role-glow: rgba(22, 128, 90, 0.16);
+  --role-shadow: rgba(22, 128, 90, 0.18);
+}
+
+.roleCardPEGAWAI {
+  --role-color: #2563eb;
+  --role-soft: rgba(37, 99, 235, 0.1);
+  --role-border: rgba(37, 99, 235, 0.25);
+  --role-glow: rgba(37, 99, 235, 0.15);
+  --role-shadow: rgba(37, 99, 235, 0.16);
+}
+
+.roleCardPELATIH {
+  --role-color: #f59e0b;
+  --role-soft: rgba(245, 158, 11, 0.11);
+  --role-border: rgba(245, 158, 11, 0.28);
+  --role-glow: rgba(245, 158, 11, 0.15);
+  --role-shadow: rgba(245, 158, 11, 0.16);
+}
+
+.roleCardPESERTA {
+  --role-color: #8b5cf6;
+  --role-soft: rgba(139, 92, 246, 0.1);
+  --role-border: rgba(139, 92, 246, 0.25);
+  --role-glow: rgba(139, 92, 246, 0.15);
+  --role-shadow: rgba(139, 92, 246, 0.16);
+}
+
+.roleCardMITRA {
+  --role-color: #0891b2;
+  --role-soft: rgba(8, 145, 178, 0.1);
+  --role-border: rgba(8, 145, 178, 0.25);
+  --role-glow: rgba(8, 145, 178, 0.15);
+  --role-shadow: rgba(8, 145, 178, 0.16);
+}
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 218px;
+
+  padding: 24px !important;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  min-height: 42px;
+}
+
+.userCount {
+  display: flex;
+  align-items: baseline;
+
+  gap: 5px;
+}
+
+.userCountText {
+  color: var(--mui-palette-text-secondary);
+}
+
+.userCountNumber {
+  color: var(--role-color);
+
+  font-weight: 700;
+
+  transition: transform 250ms ease;
+}
+
+.roleCard:hover .userCountNumber {
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   AVATARS
+========================================= */
+
+.avatarGroup {
+  flex-shrink: 0;
+
+  transition:
+    transform 300ms ease;
+}
+
+.roleCard:hover .avatarGroup {
+  transform: translateY(-2px);
+}
+
+.roleAvatar {
+  border: 2px solid var(--mui-palette-background-paper) !important;
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.roleAvatar:hover {
+  z-index: 10;
+
+  transform:
+    translateY(-5px)
+    scale(1.1);
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.avatarTooltip {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 110px;
+
+  padding: 4px 2px;
+}
+
+.avatarTooltipName {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.avatarTooltipUsername {
+  margin-top: 2px;
+
+  font-size: 10px;
+  line-height: 1.4;
+
+  opacity: 0.65;
+}
+
+/* =========================================
+   ROLE CONTENT
+========================================= */
+
+.roleContent {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 20px;
+
+  min-width: 0;
+}
+
+.roleIconWrapper {
+  position: relative;
+
+  flex: 0 0 auto;
+}
+
+.roleIcon {
+  position: relative;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  color: var(--role-color);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--role-soft),
+      rgba(255, 255, 255, 0.4)
+    );
+
+  border: 1px solid var(--role-border);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  transform: translateZ(20px);
+
+  transition:
+    transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 300ms ease,
+    background 300ms ease;
+}
+
+/*
+ * Important:
+ * Vuexy memakai Tabler Icons.
+ * Jadi icon sekarang benar-benar dirender.
+ */
+.roleIcon i {
+  display: block;
+
+  font-size: 27px;
+  line-height: 1;
+
+  color: var(--role-color);
+
+  transition:
+    transform 300ms ease,
+    filter 300ms ease;
+}
+
+.roleCard:hover .roleIcon {
+  transform:
+    translateZ(25px)
+    translateY(-4px)
+    rotate(-4deg);
+
+  box-shadow:
+    0 10px 22px var(--role-shadow);
+}
+
+.roleCard:hover .roleIcon i {
+  transform: scale(1.08);
+
+  filter:
+    drop-shadow(0 4px 7px var(--role-shadow));
+}
+
+/* =========================================
+   ROLE INFO
+========================================= */
+
+.roleInfo {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.roleTitleRow {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  flex-wrap: wrap;
+}
+
+.roleTitle {
+  color: var(--mui-palette-text-primary);
+
+  font-weight: 500;
+
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.roleCard:hover .roleTitle {
+  color: var(--role-color);
+
+  transform: translateX(1px);
+}
+
+.roleChip {
+  height: 23px;
+
+  padding-inline: 7px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.roleCard:hover .roleChip {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px var(--role-shadow);
+}
+
+.roleDescription {
+  margin-top: 5px;
+
+  max-width: 250px;
+
+  font-size: 12px;
+  line-height: 1.55;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.systemRole {
+  color: var(--mui-palette-text-disabled);
+
+  font-size: 11px;
+
+  transition: color 220ms ease;
+}
+
+.roleCard:hover .systemRole {
+  color: var(--role-color);
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+}
+
+.actionButton {
+  width: 34px;
+  height: 34px;
+
+  color: var(--mui-palette-text-secondary);
+
+  border-radius: 9px;
+
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.actionButton:hover {
+  color: var(--role-color);
+
+  background-color: var(--role-soft);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 12px var(--role-shadow);
+}
+
+.actionButton i {
+  font-size: 18px;
+
+  transition: transform 200ms ease;
+}
+
+.actionButton:hover i {
+  transform: scale(1.08);
+}
+
+/* =========================================
+   GLOW
+========================================= */
+
+.roleGlow {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  top: -105px;
+  right: -70px;
+
+  border-radius: 50%;
+
+  background: var(--role-color);
+
+  opacity: 0.075;
+
+  filter: blur(3px);
+
+  pointer-events: none;
+
+  transition:
+    transform 500ms ease,
+    opacity 350ms ease;
+}
+
+.roleCard:hover .roleGlow {
+  opacity: 0.13;
+
+  transform: scale(1.35);
+}
+
+/* =========================================
+   CURSOR LIGHT
+========================================= */
+
+.mouseLight {
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--role-glow) 0%,
+      transparent 68%
+    );
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity 250ms ease;
+}
+
+.roleCardWrapperHovered .mouseLight {
+  opacity: 1;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+  .cardContent {
+    min-height: 205px;
+
+    padding: 20px !important;
+  }
+
+  .roleCard {
+    transform: none !important;
+  }
+
+  .roleCard:hover {
+    transform: translateY(-4px) !important;
+  }
+
+  .roleIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .roleIcon i {
+    font-size: 24px;
+  }
+
+  .roleDescription {
+    max-width: 210px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .roleCard,
+  .roleIcon,
+  .roleIcon i,
+  .roleAvatar,
+  .avatarGroup,
+  .roleChip,
+  .actionButton,
+  .roleGlow,
+  .mouseLight {
+    transition: none !important;
+  }
+
+  .roleCard {
+    transform: none !important;
+  }
+}

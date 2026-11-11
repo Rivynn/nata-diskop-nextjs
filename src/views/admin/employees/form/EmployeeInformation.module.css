@@ -1,0 +1,289 @@
+.employeeInformationCard {
+  overflow: hidden;
+  border: 1px solid var(--mui-palette-divider);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.employeeInformationCard:hover {
+  border-color: color-mix(in srgb, var(--mui-palette-primary-main) 28%, var(--mui-palette-divider));
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.045);
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.employeeInformationHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.employeeInformationHeaderIcon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  color: var(--mui-palette-primary-main);
+  background: color-mix(in srgb, var(--mui-palette-primary-main) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mui-palette-primary-main) 16%, transparent);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.employeeInformationCard:hover .employeeInformationHeaderIcon {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--mui-palette-primary-main) 14%, transparent);
+}
+
+.employeeInformationHeaderIcon i {
+  font-size: 23px;
+}
+
+.employeeInformationHeaderContent {
+  min-width: 0;
+}
+
+.employeeInformationTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.employeeInformationTitle {
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+}
+
+.employeeInformationSubtitle {
+  margin-top: 2px !important;
+}
+
+.employeeInformationHeaderChip {
+  font-weight: 600 !important;
+}
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.employeeInformationContent {
+  padding: 28px !important;
+}
+
+.employeeInformationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.employeeInformationSectionHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.employeeInformationSectionIcon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  border-radius: 9px;
+  color: var(--mui-palette-text-secondary);
+  background: var(--mui-palette-action-hover);
+}
+
+.employeeInformationSectionIcon i {
+  font-size: 19px;
+}
+
+.employeeInformationSectionTitle {
+  font-weight: 700 !important;
+}
+
+.employeeInformationSectionTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.employeeInformationFields {
+  width: 100%;
+}
+
+.employeeInformationDivider {
+  margin: 30px 0 !important;
+}
+
+/* ============================================================
+   INPUT
+============================================================ */
+
+.employeeInformationPlaceholder {
+  color: var(--mui-palette-text-disabled);
+}
+
+.employeeInformationPhonePrefix {
+  font-weight: 600;
+  color: var(--mui-palette-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* ============================================================
+   AUTO DEACTIVATE
+============================================================ */
+
+.employeeInformationAutoDeactivate {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--mui-palette-warning-main) 25%, var(--mui-palette-divider));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--mui-palette-warning-main) 4%, transparent);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.employeeInformationAutoDeactivate:hover {
+  border-color: color-mix(in srgb, var(--mui-palette-warning-main) 40%, var(--mui-palette-divider));
+  background: color-mix(in srgb, var(--mui-palette-warning-main) 7%, transparent);
+  transform: translateY(-1px);
+}
+
+.employeeInformationAutoDeactivateIcon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: var(--mui-palette-warning-main);
+  background: color-mix(in srgb, var(--mui-palette-warning-main) 11%, transparent);
+}
+
+.employeeInformationAutoDeactivateIcon i {
+  font-size: 21px;
+}
+
+.employeeInformationAutoDeactivateContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.employeeInformationAutoDeactivateTitle {
+  font-weight: 700 !important;
+}
+
+.employeeInformationAutoDeactivateDescription {
+  margin-top: 2px !important;
+}
+
+.employeeInformationAutoDeactivateSwitch {
+  margin: 0 !important;
+}
+
+/* ============================================================
+   ALERT
+============================================================ */
+
+.employeeInformationAccessAlert {
+  border-radius: 12px !important;
+  align-items: flex-start;
+}
+
+.employeeInformationAlertTitle {
+  margin-bottom: 3px;
+  font-weight: 700 !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 767px) {
+  .employeeInformationContent {
+    padding: 20px !important;
+  }
+
+  .employeeInformationHeader {
+    align-items: flex-start;
+  }
+
+  .employeeInformationHeaderIcon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .employeeInformationSectionHeader {
+    gap: 10px;
+  }
+
+  .employeeInformationAutoDeactivate {
+    align-items: flex-start;
+  }
+
+  .employeeInformationAutoDeactivateSwitch {
+    margin-top: -5px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .employeeInformationContent {
+    padding: 16px !important;
+  }
+
+  .employeeInformationTitle {
+    font-size: 1.1rem !important;
+  }
+
+  .employeeInformationSubtitle {
+    font-size: 0.8rem !important;
+  }
+
+  .employeeInformationHeaderChip {
+    display: none;
+  }
+
+  .employeeInformationSectionTitleRow {
+    align-items: flex-start;
+  }
+
+  .employeeInformationAutoDeactivate {
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .employeeInformationAutoDeactivateIcon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .employeeInformationCard,
+  .employeeInformationHeaderIcon,
+  .employeeInformationAutoDeactivate {
+    transition: none;
+  }
+}

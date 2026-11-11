@@ -1,0 +1,931 @@
+/* ================================================================
+   VARIABLES
+================================================================ */
+
+.participantCardPreview {
+  --primary: #16805a;
+  --primary-dark: #0a6043;
+  --primary-light: #eaf6f0;
+
+  --text: #263832;
+  --muted: #73827c;
+  --border: #e1ebe6;
+
+  width: 100%;
+}
+
+/* ================================================================
+   CARD
+================================================================ */
+
+.participantCard {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 85.6 / 54;
+
+  overflow: hidden;
+
+  background: #fff;
+  color: var(--text);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 60px rgba(22, 70, 52, 0.12);
+
+  container-type: inline-size;
+}
+
+/* ================================================================
+   HEADER
+================================================================ */
+
+.participantCardHeader {
+  position: relative;
+
+  height: 37%;
+
+  overflow: hidden;
+
+  padding: 4.2% 5% 3.5%;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      120deg,
+      #075c40 0%,
+      #16805a 48%,
+      #29966d 100%
+    );
+}
+
+.participantHeaderGrid {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.07;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 1px
+    );
+
+  background-size: 22px 22px;
+}
+
+.participantHeaderGlow {
+  position: absolute;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.participantHeaderGlowOne {
+  width: 280px;
+  height: 280px;
+
+  top: -225px;
+  right: -90px;
+}
+
+.participantHeaderGlowTwo {
+  width: 210px;
+  height: 210px;
+
+  bottom: -190px;
+  left: -80px;
+}
+
+/* ================================================================
+   HEADER TOP
+================================================================ */
+
+.participantHeaderTop {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.participantInstitution {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.participantInstitutionLogo {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  padding: 5px;
+
+  border-radius: 8px;
+
+  background: #fff;
+
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.participantInstitutionLogo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.participantInstitutionInfo {
+  min-width: 0;
+}
+
+.participantInstitutionName {
+  color: #fff !important;
+
+  font-size: clamp(8px, 1.35cqw, 13px) !important;
+
+  font-weight: 800 !important;
+
+  line-height: 1.15 !important;
+
+  letter-spacing: 0.02em !important;
+
+  white-space: nowrap;
+}
+
+.participantInstitutionDepartment {
+  margin-top: 2px !important;
+
+  color: rgba(255, 255, 255, 0.62) !important;
+
+  font-size: clamp(6px, 0.9cqw, 9px) !important;
+
+  line-height: 1.2 !important;
+
+  letter-spacing: 0.06em !important;
+
+  white-space: nowrap;
+}
+
+.participantBrand {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  flex-shrink: 0;
+}
+
+.participantBrandLogo {
+  display: block;
+
+  width: 72px;
+  max-height: 28px;
+
+  object-fit: contain;
+
+  object-position: right center;
+
+  filter: brightness(0) invert(1);
+
+  opacity: 0.96;
+}
+
+.participantBrandCaption {
+  margin-top: 3px;
+
+  color: rgba(255, 255, 255, 0.52);
+
+  font-size: 5px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.17em;
+}
+
+/* ================================================================
+   HEADER LINE
+================================================================ */
+
+.participantHeaderLine {
+  position: relative;
+  z-index: 2;
+
+  height: 1px;
+
+  margin: 3.5% 0 3%;
+
+  background: rgba(255, 255, 255, 0.17);
+}
+
+/* ================================================================
+   HEADER BOTTOM
+================================================================ */
+
+.participantHeaderBottom {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.participantEyebrow {
+  color: rgba(255, 255, 255, 0.57) !important;
+
+  font-size: clamp(5px, 0.85cqw, 8px) !important;
+
+  font-weight: 700 !important;
+
+  letter-spacing: 0.18em !important;
+}
+
+.participantTitle {
+  margin-top: 2px !important;
+
+  color: #fff !important;
+
+  font-size: clamp(13px, 2.7cqw, 25px) !important;
+
+  font-weight: 900 !important;
+
+  line-height: 1.05 !important;
+
+  letter-spacing: -0.04em !important;
+}
+
+.participantCardId {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  flex-shrink: 0;
+}
+
+.participantCardId span {
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 5px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+}
+
+.participantCardId strong {
+  margin-top: 2px;
+
+  color: #fff;
+
+  font-family: monospace;
+
+  font-size: clamp(6px, 1.1cqw, 10px);
+
+  font-weight: 700;
+
+  letter-spacing: 0.03em;
+}
+
+/* ================================================================
+   BODY
+================================================================ */
+
+.participantCardBody {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    25%;
+
+  height: 51%;
+
+  background: #fff;
+}
+
+/* ================================================================
+   MAIN
+================================================================ */
+
+.participantMain {
+  min-width: 0;
+
+  padding: 4% 5%;
+}
+
+/* ================================================================
+   IDENTITY
+================================================================ */
+
+.participantIdentity {
+  display: flex;
+
+  align-items: center;
+
+  gap: 3%;
+}
+
+.participantAvatar {
+  width: 16%;
+  aspect-ratio: 0.82;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border: 2px solid #fff;
+
+  border-radius: 9px;
+
+  background: #edf6f1;
+
+  box-shadow:
+    0 5px 14px rgba(20, 70, 50, 0.12);
+}
+
+.participantAvatar img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.participantIdentityInfo {
+  min-width: 0;
+}
+
+.participantLabel {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: clamp(5px, 0.8cqw, 8px);
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.13em;
+}
+
+.participantName {
+  margin-top: 3px !important;
+
+  color: var(--text) !important;
+
+  font-size: clamp(11px, 2.4cqw, 22px) !important;
+
+  font-weight: 900 !important;
+
+  line-height: 1.05 !important;
+
+  letter-spacing: -0.035em !important;
+
+  white-space: nowrap;
+}
+
+.participantActive {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  margin-top: 5px;
+
+  color: var(--primary);
+
+  font-size: 6px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.07em;
+}
+
+.participantActive span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(22, 128, 90, 0.1);
+}
+
+/* ================================================================
+   TRAINING
+================================================================ */
+
+.participantTraining {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 4%;
+
+  padding: 8px 10px;
+
+  border: 1px solid #deebe4;
+
+  border-radius: 8px;
+
+  background: #f5faf7;
+}
+
+.participantTrainingIcon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  border-radius: 7px;
+
+  color: var(--primary);
+
+  background: #e3f2eb;
+}
+
+.participantTrainingIcon i {
+  font-size: 15px;
+}
+
+.participantTrainingInfo {
+  min-width: 0;
+}
+
+.participantTrainingName {
+  margin-top: 2px !important;
+
+  color: var(--text) !important;
+
+  font-size: clamp(8px, 1.55cqw, 15px) !important;
+
+  font-weight: 800 !important;
+
+  line-height: 1.1 !important;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.participantTrainingType {
+  margin-top: 2px !important;
+
+  color: var(--muted) !important;
+
+  font-size: clamp(5px, 0.9cqw, 9px) !important;
+
+  white-space: nowrap;
+}
+
+/* ================================================================
+   META
+================================================================ */
+
+.participantMeta {
+  display: flex;
+
+  gap: 7%;
+
+  margin-top: 4%;
+}
+
+.participantMeta > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.participantMeta span {
+  color: var(--muted);
+
+  font-size: 5px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.participantMeta strong {
+  color: var(--text);
+
+  font-size: clamp(6px, 1cqw, 10px);
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+/* ================================================================
+   VERIFICATION
+================================================================ */
+
+.participantVerification {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 5% 7%;
+
+  border-left: 1px solid var(--border);
+
+  background: #fbfdfc;
+}
+
+.participantVerificationTitle {
+  margin-bottom: 7px;
+
+  color: var(--muted);
+
+  font-size: 5px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+.participantQrWrapper {
+  padding: 6px;
+
+  border: 1px solid #dfeae5;
+
+  border-radius: 8px;
+
+  background: #fff;
+}
+
+.participantQr {
+  display: grid;
+
+  width: clamp(58px, 11cqw, 108px);
+  aspect-ratio: 1;
+}
+
+.participantQrDark {
+  background: #1c3028;
+}
+
+.participantQrLight {
+  background: #fff;
+}
+
+.participantVerificationText {
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 5px;
+
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+.participantVerificationCode {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 100%;
+
+  margin-top: 8px;
+
+  padding-top: 7px;
+
+  border-top: 1px dashed #d9e5df;
+}
+
+.participantVerificationCode span {
+  color: var(--muted);
+
+  font-size: 4px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.participantVerificationCode strong {
+  margin-top: 2px;
+
+  color: var(--text);
+
+  font-family: monospace;
+
+  font-size: 6px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+}
+
+/* ================================================================
+   FOOTER
+================================================================ */
+
+.participantCardFooter {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  height: 12%;
+
+  padding: 0 5%;
+
+  border-top: 1px solid var(--border);
+
+  background: #f8fbf9;
+}
+
+.participantOrganizer {
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.participantOrganizer span {
+  color: var(--muted);
+
+  font-size: 4px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+}
+
+.participantOrganizer strong {
+  margin-top: 2px;
+
+  color: var(--text);
+
+  font-size: clamp(5px, 0.85cqw, 8px);
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.participantFooterStatus {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  color: var(--primary);
+
+  font-size: 5px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+.participantStatusDot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+}
+
+.participantSeal {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  border: 1px solid #cce3d7;
+
+  border-radius: 50%;
+
+  color: var(--primary);
+
+  background: #eaf6f0;
+}
+
+.participantSeal i {
+  font-size: 13px;
+}
+
+/* ================================================================
+   PRINT
+================================================================ */
+
+@media print {
+  @page {
+    size: 85.6mm 54mm;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 85.6mm !important;
+    height: 54mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #fff !important;
+
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .participantCardPreview,
+  .participantCardPreview * {
+    visibility: visible !important;
+  }
+
+  .participantCardPreview {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 85.6mm !important;
+    height: 54mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    overflow: hidden !important;
+  }
+
+  .participantCardPreview .MuiCardContent-root {
+    width: 100% !important;
+    height: 100% !important;
+
+    padding: 0 !important;
+  }
+
+  .participantCard {
+    width: 85.6mm !important;
+    height: 54mm !important;
+
+    aspect-ratio: 85.6 / 54 !important;
+
+    margin: 0 !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    overflow: hidden !important;
+  }
+
+  .participantCardHeader {
+    height: 37% !important;
+  }
+
+  .participantCardBody {
+    height: 51% !important;
+  }
+
+  .participantCardFooter {
+    height: 12% !important;
+  }
+}
+.participantMeta {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+
+  gap: 18px;
+
+  margin-top: 4%;
+}
+
+.participantMetaItem {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  gap: 3px;
+}
+
+.participantMetaItem span {
+  color: var(--muted);
+
+  font-size: 5px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.participantMetaItem strong {
+  color: var(--text);
+
+  font-size: clamp(6px, 1cqw, 10px);
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+.participantTrainingCode {
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.participantTrainingCode span {
+  color: var(--muted);
+
+  font-size: 4px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+}
+
+.participantTrainingCode strong {
+  margin-top: 2px;
+
+  color: var(--text);
+
+  font-family: monospace;
+
+  font-size: clamp(5px, 0.85cqw, 8px);
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}

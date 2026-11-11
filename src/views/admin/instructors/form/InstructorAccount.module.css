@@ -1,0 +1,669 @@
+/* =========================================================
+   INSTRUCTOR ACCOUNT
+========================================================= */
+
+.accountWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.accountAlert {
+  border-radius: 10px;
+}
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.accountCard {
+  overflow: hidden;
+}
+
+/* =========================================================
+   PROFILE PHOTO
+========================================================= */
+
+.avatarSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  padding: 1.75rem;
+}
+
+.avatarPreviewWrapper {
+  position: relative;
+
+  width: 108px;
+  height: 108px;
+
+  flex-shrink: 0;
+}
+
+.avatarGlow {
+  position: absolute;
+
+  inset: -6px;
+
+  border-radius: 50%;
+
+  opacity: 0.5;
+
+  background:
+    var(--mui-palette-primary-main);
+
+  filter: blur(16px);
+}
+
+.avatarPreview {
+  position: relative;
+
+  width: 108px;
+  height: 108px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 3px solid
+  var(--mui-palette-background-paper);
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   CAMERA BUTTON
+========================================================= */
+
+.avatarEditButton {
+  position: absolute;
+
+  right: -3px;
+  bottom: -3px;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid
+  var(--mui-palette-background-paper);
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  color:
+    var(--mui-palette-primary-contrastText);
+
+  background:
+    var(--mui-palette-primary-main);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.14);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.avatarEditButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.avatarEditButton:active {
+  transform: translateY(0);
+}
+
+.avatarEditButton i {
+  font-size: 17px;
+}
+
+/* =========================================================
+   PHOTO CONTENT
+========================================================= */
+
+.avatarContent {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.6rem;
+}
+
+.avatarTitleRow {
+  display: flex;
+  align-items: center;
+
+  gap: 0.65rem;
+
+  flex-wrap: wrap;
+}
+
+.avatarTitle {
+  font-weight: 600;
+}
+
+.avatarDescription {
+  max-width: 680px;
+
+  line-height: 1.6;
+}
+
+.avatarActions {
+  display: flex;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   FORM LABEL
+========================================================= */
+
+.fieldLabel {
+  display: block;
+
+  margin-bottom: 0.45rem;
+
+  color:
+    var(--mui-palette-text-primary);
+
+  font-size: 0.8125rem;
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+.requiredMark {
+  color:
+    var(--mui-palette-error-main);
+
+  font-weight: 700;
+}
+
+.optionalLabel {
+  color:
+    var(--mui-palette-text-disabled);
+
+  font-size: 0.75rem;
+
+  font-weight: 400;
+}
+
+/* =========================================================
+   FORM HELPERS
+========================================================= */
+
+.helperText {
+  display: block;
+
+  margin-top: 5px !important;
+
+  color:
+    var(--mui-palette-text-secondary);
+
+  font-size: 0.71rem !important;
+
+  line-height: 1.45 !important;
+}
+
+.errorText {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 6px !important;
+
+  color:
+    var(--mui-palette-error-main);
+
+  font-size: 0.71rem !important;
+
+  line-height: 1.4 !important;
+
+  animation:
+    helperReveal 250ms ease;
+}
+
+.errorText i {
+  flex-shrink: 0;
+
+  font-size: 14px;
+}
+
+.successText {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 6px !important;
+
+  color:
+    var(--mui-palette-success-main);
+
+  font-size: 0.71rem !important;
+
+  line-height: 1.4 !important;
+
+  animation:
+    helperReveal 250ms ease;
+}
+
+.successText i {
+  flex-shrink: 0;
+
+  font-size: 14px;
+}
+
+/* =========================================================
+   USERNAME CHECK
+========================================================= */
+
+.usernameRow {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+.usernameInputWrapper {
+  flex: 1;
+
+  min-width: 0;
+}
+
+/*
+ * Username + tombol dibuat compact karena
+ * field sekarang berada dalam grid md={6}.
+ */
+
+.checkUsernameButton {
+  position: relative;
+
+  width: 116px;
+  min-width: 116px !important;
+
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding-inline: 10px !important;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  border-radius: 8px !important;
+
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+
+  transition:
+    transform 220ms
+    cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms ease,
+    background-color 220ms ease !important;
+}
+
+.checkUsernameButton::before {
+  position: absolute;
+
+  inset: 0;
+
+  content: '';
+
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.28) 45%,
+    transparent 70%
+  );
+
+  transform: translateX(-120%);
+
+  transition:
+    transform 650ms
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.checkUsernameButton:hover::before {
+  transform: translateX(120%);
+}
+
+.checkUsernameButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px
+    color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 14%,
+      transparent
+    );
+}
+
+.checkUsernameButton:active:not(:disabled) {
+  transform:
+    translateY(0)
+    scale(0.98);
+}
+
+.checkUsernameButton:disabled {
+  cursor: not-allowed;
+}
+
+.checkUsernameButton i {
+  position: relative;
+  z-index: 1;
+
+  font-size: 15px;
+}
+
+.checkUsernameButton span {
+  position: relative;
+  z-index: 1;
+}
+
+.checkingButton {
+  animation:
+    checkingButton 1.2s
+    ease-in-out infinite;
+}
+
+/* =========================================================
+   USERNAME STATUS INDICATORS
+========================================================= */
+
+.successIndicator,
+.errorIndicator {
+  display: inline-flex;
+
+  width: 20px;
+  height: 20px;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  animation:
+    usernameStatusPop 350ms
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.successIndicator {
+  color:
+    var(--mui-palette-success-main);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--mui-palette-success-main) 10%,
+      transparent
+    );
+}
+
+.errorIndicator {
+  color:
+    var(--mui-palette-error-main);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--mui-palette-error-main) 10%,
+      transparent
+    );
+}
+
+.successIndicator i,
+.errorIndicator i {
+  font-size: 13px;
+}
+
+/* =========================================================
+   PASSWORD STRENGTH
+========================================================= */
+
+.passwordStrength {
+  display: flex;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  margin-top: 0.5rem;
+}
+
+.passwordStrengthBars {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  flex: 1;
+}
+
+.passwordStrengthBar {
+  height: 6px;
+
+  flex: 1;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background:
+    var(--mui-palette-action-selected);
+}
+
+.passwordStrengthFill {
+  height: 100%;
+
+  border-radius: inherit;
+
+  transition:
+    width 300ms ease,
+    background-color 300ms ease;
+}
+
+.passwordRequirements {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  column-gap: 0.75rem;
+  row-gap: 0.125rem;
+
+  margin-top: 0.375rem;
+}
+
+.passwordRequirement {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+}
+
+.passwordRequirement i {
+  font-size: 13px;
+}
+
+/* =========================================================
+   PASSWORD MATCH
+========================================================= */
+
+.passwordMatch {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 0.5rem;
+}
+
+.passwordMatch i {
+  font-size: 15px;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes checkingButton {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes usernameStatusPop {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(0.75);
+  }
+
+  60% {
+    transform:
+      scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+}
+
+@keyframes helperReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-2px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+  .avatarSection {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding: 1.5rem;
+  }
+
+  .avatarContent {
+    width: 100%;
+  }
+
+  .avatarPreviewWrapper {
+    width: 96px;
+    height: 96px;
+  }
+
+  .avatarPreview {
+    width: 96px;
+    height: 96px;
+  }
+
+  .avatarEditButton {
+    width: 32px;
+    height: 32px;
+  }
+
+  .avatarActions {
+    width: 100%;
+  }
+
+  .avatarActions button {
+    flex: 1;
+  }
+
+  /*
+   * Mobile username:
+   * input tetap full width,
+   * tombol turun ke bawah.
+   */
+
+  .usernameRow {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .usernameInputWrapper {
+    width: 100%;
+  }
+
+  .checkUsernameButton {
+    width: 100%;
+    min-width: 100% !important;
+  }
+
+  .passwordStrength {
+    gap: 0.5rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .avatarEditButton,
+  .passwordStrengthFill,
+  .checkUsernameButton,
+  .successIndicator,
+  .errorIndicator,
+  .successText,
+  .errorText {
+    animation: none !important;
+
+    transition: none !important;
+  }
+}

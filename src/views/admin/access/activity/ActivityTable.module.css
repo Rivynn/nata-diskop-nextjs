@@ -1,0 +1,170 @@
+.activityCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 260px;
+}
+
+.activityIcon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  color:
+    var(--mui-palette-primary-main);
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 8%,
+    transparent
+  );
+}
+
+.activityIcon i {
+  font-size: 17px;
+}
+
+.ipWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.ipAddress {
+  font-family:
+    'SFMono-Regular',
+    Consolas,
+    'Liberation Mono',
+    monospace !important;
+
+  font-size: 12px !important;
+  font-weight: 600 !important;
+
+  white-space: nowrap;
+}
+
+.ipButton {
+  width: 28px !important;
+  height: 28px !important;
+
+  border-radius: 7px !important;
+
+  color:
+    var(--mui-palette-text-secondary) !important;
+}
+
+.ipButton:hover {
+  color:
+    var(--mui-palette-primary-main) !important;
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 7%,
+    transparent
+  ) !important;
+}
+
+.statusWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.successDot,
+.failedDot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 999px;
+}
+
+.successDot {
+  background:
+    var(--mui-palette-success-main);
+
+  box-shadow:
+    0 0 0 3px color-mix(
+      in srgb,
+      var(--mui-palette-success-main) 12%,
+      transparent
+    );
+}
+
+.failedDot {
+  background:
+    var(--mui-palette-error-main);
+
+  box-shadow:
+    0 0 0 3px color-mix(
+      in srgb,
+      var(--mui-palette-error-main) 12%,
+      transparent
+    );
+}
+
+.actionButton {
+  width: 33px !important;
+  height: 33px !important;
+
+  border: 1px solid
+  var(--mui-palette-divider) !important;
+
+  border-radius: 8px !important;
+
+  color:
+    var(--mui-palette-text-secondary) !important;
+
+  background:
+    var(--mui-palette-background-paper) !important;
+
+  transition:
+    transform 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease !important;
+}
+
+.actionButton:hover {
+  color:
+    var(--mui-palette-primary-main) !important;
+
+  border-color: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 25%,
+    var(--mui-palette-divider)
+  ) !important;
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 6%,
+    var(--mui-palette-background-paper)
+  ) !important;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgb(0 0 0 / 5%);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .actionButton {
+    transition: none;
+  }
+
+  .actionButton:hover {
+    transform: none;
+  }
+}

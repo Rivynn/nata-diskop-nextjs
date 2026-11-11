@@ -1,0 +1,488 @@
+.profile {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  transition:
+    padding 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 320ms ease;
+}
+
+/* ========================================
+   PROFILE STATES
+======================================== */
+
+.expanded {
+  padding: 10px 12px 16px;
+}
+
+.collapsed {
+  padding: 10px 6px 14px;
+}
+
+/* ========================================
+   INNER
+======================================== */
+
+.profileInner {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 62px;
+
+  padding: 9px 10px;
+
+  border-radius: 14px;
+
+  transition:
+    padding 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.expanded .profileInner {
+  gap: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(
+        in srgb,
+        var(--mui-palette-primary-main) 7%,
+        transparent
+      ),
+      transparent 70%
+    );
+
+  border: 1px solid
+  color-mix(
+    in srgb,
+    var(--mui-palette-divider) 70%,
+    transparent
+  );
+}
+
+.expanded .profileInner:hover {
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(
+        in srgb,
+        var(--mui-palette-primary-main) 11%,
+        transparent
+      ),
+      transparent 72%
+    );
+
+  box-shadow:
+    0 8px 24px
+    color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 8%,
+      transparent
+    );
+}
+
+.collapsed .profileInner {
+  justify-content: center;
+  padding: 8px;
+}
+
+/* ========================================
+   AMBIENT GLOW
+======================================== */
+
+.ambientGlow {
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  top: -55px;
+  left: -30px;
+
+  border-radius: 50%;
+
+  background: var(--mui-palette-primary-main);
+
+  opacity: 0.055;
+
+  filter: blur(30px);
+
+  pointer-events: none;
+
+  animation: ambientFloat 5s ease-in-out infinite;
+}
+
+/* ========================================
+   AVATAR
+======================================== */
+
+.avatarWrapper {
+  position: relative;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarGlow {
+  position: absolute;
+
+  inset: -4px;
+
+  border-radius: 50%;
+
+  background: var(--mui-palette-primary-main);
+
+  opacity: 0.14;
+
+  filter: blur(5px);
+
+  transform: scale(0.92);
+
+  transition:
+    transform 300ms ease,
+    opacity 300ms ease;
+}
+
+.profileInner:hover .avatarGlow {
+  opacity: 0.28;
+  transform: scale(1.08);
+}
+
+.avatar {
+  position: relative;
+
+  z-index: 2;
+
+  border: 2px solid
+  color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 35%,
+    transparent
+  );
+
+  box-shadow:
+    0 3px 12px
+    color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 18%,
+      transparent
+    );
+
+  transition:
+    transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 300ms ease;
+}
+
+.profileInner:hover .avatar {
+  transform: scale(1.045);
+
+  box-shadow:
+    0 5px 18px
+    color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 28%,
+      transparent
+    );
+}
+
+/* ========================================
+   ONLINE STATUS
+======================================== */
+
+.online {
+  position: absolute;
+
+  z-index: 4;
+
+  right: -1px;
+  bottom: 0;
+
+  width: 13px;
+  height: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--mui-palette-success-main);
+
+  border: 2px solid
+  var(--mui-palette-background-paper);
+
+  box-shadow:
+    0 2px 7px
+    color-mix(
+      in srgb,
+      var(--mui-palette-success-main) 35%,
+      transparent
+    );
+}
+
+.onlinePulse {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  animation: onlinePulse 2.2s ease-out infinite;
+}
+
+/* ========================================
+   PROFILE INFO
+======================================== */
+
+.profileInfo {
+  min-width: 0;
+
+  display: flex;
+  flex: 1;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  overflow: hidden;
+
+  transition:
+    opacity 260ms ease,
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 320ms ease;
+}
+
+.expanded .profileInfo {
+  opacity: 1;
+  transform: translateX(0);
+  max-width: 180px;
+}
+
+.collapsed .profileInfo {
+  opacity: 0;
+  transform: translateX(-8px);
+  max-width: 0;
+  pointer-events: none;
+}
+
+.name {
+  display: block;
+
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.roleWrapper {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.roleDot {
+  flex-shrink: 0;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--mui-palette-success-main);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--mui-palette-success-main) 10%,
+      transparent
+    );
+}
+
+.role {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: 0.72rem;
+}
+
+/* ========================================
+   COLLAPSED INDICATOR
+======================================== */
+
+.collapsedIndicator {
+  position: absolute;
+
+  right: 4px;
+  top: 50%;
+
+  width: 3px;
+  height: 0;
+
+  border-radius: 4px;
+
+  background: var(--mui-palette-primary-main);
+
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    scaleY(0);
+
+  transition:
+    height 220ms ease,
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.collapsed .profileInner:hover .collapsedIndicator {
+  height: 24px;
+
+  opacity: 0.7;
+
+  transform:
+    translateY(-50%)
+    scaleY(1);
+}
+
+/* ========================================
+   ACCENT
+======================================== */
+
+.accentLine {
+  position: relative;
+
+  height: 1px;
+
+  margin: 12px 8px 0;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--mui-palette-divider),
+      transparent
+    );
+}
+
+.accentLine span {
+  position: absolute;
+
+  top: 0;
+  left: 20%;
+
+  width: 25%;
+
+  height: 1px;
+
+  background: var(--mui-palette-primary-main);
+
+  opacity: 0.5;
+
+  animation: accentMove 4s ease-in-out infinite;
+}
+
+/* ========================================
+   TOOLTIP
+======================================== */
+
+.tooltipContent {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.tooltipContent strong {
+  font-size: 0.8rem;
+}
+
+.tooltipContent span {
+  font-size: 0.7rem;
+  opacity: 0.75;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes onlinePulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes ambientFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(12px, 7px, 0);
+  }
+}
+
+@keyframes accentMove {
+  0%,
+  100% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 0.5;
+  }
+
+  70% {
+    transform: translateX(220px);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .profile,
+  .profileInner,
+  .profileInfo,
+  .avatar,
+  .avatarGlow,
+  .collapsedIndicator {
+    transition: none;
+  }
+
+  .ambientGlow,
+  .onlinePulse,
+  .accentLine span {
+    animation: none;
+  }
+}

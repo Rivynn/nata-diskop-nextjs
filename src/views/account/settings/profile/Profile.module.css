@@ -1,0 +1,427 @@
+.profileWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profileHeaderIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: 12px;
+  background: var(--mui-palette-background-paper);
+  color: var(--mui-palette-primary-main);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.profileHeaderIcon i {
+  font-size: 26px;
+}
+
+.profileTitle {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.profileAlert {
+  border-radius: 10px;
+}
+
+.profileCard {
+  overflow: hidden;
+}
+
+.photoSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.75rem;
+}
+
+.photoPreviewWrapper {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  flex-shrink: 0;
+}
+
+.photoGlow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  opacity: 0.55;
+  background: var(--mui-palette-primary-main);
+  filter: blur(16px);
+}
+
+.photoPreview {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--mui-palette-background-paper);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.photoEditButton {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--mui-palette-background-paper);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--mui-palette-primary-contrastText);
+  background: var(--mui-palette-primary-main);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.photoEditButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px
+  rgba(0, 0, 0, 0.16);
+}
+
+.photoEditButton i {
+  font-size: 17px;
+}
+
+.photoContent {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.photoTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.photoTitle {
+  font-weight: 600;
+}
+
+.photoDescription {
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+.photoActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.sectionIcon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 10%,
+    transparent
+  );
+  color: var(--mui-palette-primary-main);
+}
+
+.sectionIcon i {
+  font-size: 20px;
+}
+
+.sectionTitle {
+  font-weight: 600;
+}
+
+.sectionDivider {
+  margin-bottom: 1.5rem;
+}
+
+.readonlyHelper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.privateHelper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.privateHelper i {
+  font-size: 14px;
+}
+
+.phonePrefix {
+  font-weight: 600;
+  color: var(--mui-palette-text-primary);
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .photoSection {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .photoContent {
+    width: 100%;
+  }
+
+  .formActions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .actionButtons {
+    width: 100%;
+  }
+
+  .actionButtons button {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photoEditButton {
+    transition: none;
+  }
+}
+
+.profileWrapper :global(.MuiFormLabel-asterisk) {
+  color: var(--mui-palette-error-main);
+  font-weight: 700;
+}
+
+/* =========================================================
+   REGION / ADDRESS
+========================================================= */
+
+.profileFieldHint {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  padding-left: 2px;
+
+  font-size: 0.75rem;
+  line-height: 1.4;
+
+  color: var(--mui-palette-success-main);
+}
+
+.profileFieldHint i {
+  font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   REGION SUMMARY
+========================================================= */
+
+.profileRegionSummary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  width: 100%;
+  min-height: 68px;
+
+  padding: 14px 16px;
+
+  border: 1px solid
+  var(--mui-palette-divider);
+
+  border-radius: 10px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 4%,
+      var(--mui-palette-background-paper)
+    );
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.profileRegionSummary:hover {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 30%,
+      var(--mui-palette-divider)
+    );
+
+  box-shadow:
+    0 3px 12px
+    color-mix(
+      in srgb,
+      var(--mui-palette-common-black) 5%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   REGION SUMMARY ICON
+========================================================= */
+
+.profileRegionSummaryIcon {
+  flex: 0 0 auto;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  color:
+    var(--mui-palette-primary-main);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--mui-palette-primary-main) 10%,
+      transparent
+    );
+}
+
+.profileRegionSummaryIcon i {
+  font-size: 21px;
+}
+
+
+/* =========================================================
+   REGION SUMMARY CONTENT
+========================================================= */
+
+.profileRegionSummaryContent {
+  min-width: 0;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profileRegionSummaryText {
+  overflow: hidden;
+
+  font-weight: 500;
+  line-height: 1.5;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   REGION SUMMARY STATUS
+========================================================= */
+
+.profileRegionSummaryStatus {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color:
+    var(--mui-palette-success-main);
+}
+
+.profileRegionSummaryStatus i {
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   REQUIRED FIELD
+========================================================= */
+
+.profileWrapper :global(.MuiFormLabel-asterisk) {
+  color:
+    var(--mui-palette-error-main);
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+  .profileRegionSummary {
+    align-items: flex-start;
+    gap: 11px;
+
+    padding: 12px 13px;
+  }
+
+  .profileRegionSummaryIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .profileRegionSummaryIcon i {
+    font-size: 19px;
+  }
+
+  .profileRegionSummaryText {
+    font-size: 0.8rem;
+  }
+
+  .profileRegionSummaryStatus {
+    padding-top: 2px;
+  }
+}

@@ -1,0 +1,258 @@
+.deviceIcon {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  border: 1px solid
+  var(--mui-palette-divider);
+
+  border-radius: 9px;
+
+  color: var(--mui-palette-text-secondary);
+
+  background: var(
+    --mui-palette-background-paper
+  );
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.deviceIcon:hover {
+  color: var(
+    --mui-palette-primary-main
+  );
+
+  border-color: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 30%,
+    var(--mui-palette-divider)
+  );
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 5%,
+    var(--mui-palette-background-paper)
+  );
+
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* IP Address                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.ipAddressWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  min-height: 34px;
+}
+
+.ipAddress {
+  min-width: 112px;
+
+  font-family:
+    'SFMono-Regular',
+    Consolas,
+    'Liberation Mono',
+    monospace !important;
+
+  font-size: 12px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: 0.02em;
+
+  white-space: nowrap;
+}
+
+.ipToggle {
+  width: 28px;
+  height: 28px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 7px;
+
+  color: var(
+    --mui-palette-text-secondary
+  );
+
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.ipToggle:hover {
+  color: var(
+    --mui-palette-primary-main
+  );
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 7%,
+    transparent
+  );
+
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Status                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.statusWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.statusDotActive,
+.statusDotIdle {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 999px;
+
+  flex-shrink: 0;
+}
+
+.statusDotActive {
+  background: var(
+    --mui-palette-success-main
+  );
+
+  box-shadow:
+    0 0 0 3px color-mix(
+      in srgb,
+      var(--mui-palette-success-main) 12%,
+      transparent
+    );
+}
+
+.statusDotIdle {
+  background: var(
+    --mui-palette-text-disabled
+  );
+
+  box-shadow:
+    0 0 0 3px color-mix(
+      in srgb,
+      var(--mui-palette-text-disabled) 10%,
+      transparent
+    );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Actions                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.actionGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 3px;
+
+  border: 1px solid
+  var(--mui-palette-divider);
+
+  border-radius: 10px;
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-background-paper) 92%,
+    var(--mui-palette-background-default)
+  );
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.actionGroup:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 20%,
+    var(--mui-palette-divider)
+  );
+
+  box-shadow:
+    0 4px 14px rgb(0 0 0 / 5%);
+}
+
+.actionButton {
+  width: 31px !important;
+  height: 31px !important;
+
+  border-radius: 7px !important;
+
+  color: var(
+    --mui-palette-text-secondary
+  ) !important;
+
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease !important;
+}
+
+.actionButton:hover {
+  color: var(
+    --mui-palette-primary-main
+  ) !important;
+
+  background: color-mix(
+    in srgb,
+    var(--mui-palette-primary-main) 7%,
+    transparent
+  ) !important;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 3px 8px rgb(0 0 0 / 5%);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+}
+
+.actionIcon {
+  color: var(
+    --mui-palette-text-secondary
+  ) !important;
+
+  transition: color 160ms ease;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reduced Motion                                                             */
+/* -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .deviceIcon,
+  .ipToggle,
+  .actionButton,
+  .actionGroup {
+    transition: none;
+  }
+
+  .deviceIcon:hover,
+  .ipToggle:hover,
+  .actionButton:hover {
+    transform: none;
+  }
+}
