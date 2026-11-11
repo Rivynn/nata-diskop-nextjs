@@ -1,4 +1,130 @@
-name: discord.yml
+name: Discord Notifications
+
 on:
+  push:
+    branches:
+      - main
+      - development
+      - 'feature/**'
+      - 'fix/**'
+      - 'refactor/**'
+      - 'chore/**'
+
+  pull_request:
+    branches:
+      - main
+      - development
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+      - closed
+
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
+  notify:
+    name: Send Discord Notification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify Discord on Push
+        if: github.event_name == 'push'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          REPOSITORY: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message || 'Branch update' }}
+          COMMIT_URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+          SHORT_SHA: ${{ github.sha }}
+        run: |
+          PAYLOAD=$(jq -n \
+            --arg title "🚀 New Push Detected" \
+            --arg repo "$REPOSITORY" \
+            --arg branch "$BRANCH" \
+            --arg actor "$ACTOR" \
+            --arg message "$COMMIT_MESSAGE" \
+            --arg url "$COMMIT_URL" \
+            --arg sha "${SHORT_SHA:0:7}" \
+            '{
+              embeds: [{
+                title: $title,
+                color: 5763719,
+                fields: [
+                  {name: "Repository", value: $repo, inline: true},
+                  {name: "Branch", value: $branch, inline: true},
+                  {name: "Author", value: $actor, inline: true},
+                  {name: "Commit", value: $sha, inline: true},
+                  {name: "Message", value: $message, inline: false}
+                ],
+                url: $url,
+                footer: {text: "GitHub Actions • Nata App"},
+                timestamp: (now | todate)
+              }]
+            }')
+
+          curl -fsS \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD" \
+            "$DISCORD_WEBHOOK_URL"
+
+      - name: Notify Discord on Pull Request
+        if: github.event_name == 'pull_request'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          REPOSITORY: ${{ github.repository }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_ACTION: ${{ github.event.action }}
+          PR_SOURCE: ${{ github.event.pull_request.head.ref }}
+          PR_TARGET: ${{ github.event.pull_request.base.ref }}
+          PR_MERGED: ${{ github.event.pull_request.merged }}
+        run: |
+          if [ "$PR_ACTION" = "closed" ] && [ "$PR_MERGED" = "true" ]; then
+            TITLE="✅ Pull Request Merged"
+            COLOR=5763719
+          elif [ "$PR_ACTION" = "closed" ]; then
+            TITLE="❌ Pull Request Closed"
+            COLOR=15548997
+          else
+            TITLE="🔀 Pull Request Update"
+            COLOR=3447003
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg title "$TITLE" \
+            --arg repo "$REPOSITORY" \
+            --arg pr "$PR_TITLE" \
+            --arg author "$PR_AUTHOR" \
+            --arg source "$PR_SOURCE" \
+            --arg target "$PR_TARGET" \
+            --arg url "$PR_URL" \
+            --arg action "$PR_ACTION" \
+            --argjson color "$COLOR" \
+            '{
+              embeds: [{
+                title: $title,
+                color: $color,
+                fields: [
+                  {name: "Repository", value: $repo, inline: true},
+                  {name: "Action", value: $action, inline: true},
+                  {name: "Author", value: $author, inline: true},
+                  {name: "Source", value: $source, inline: true},
+                  {name: "Target", value: $target, inline: true},
+                  {name: "Pull Request", value: $pr, inline: false}
+                ],
+                url: $url,
+                footer: {text: "GitHub Actions • Nata App"},
+                timestamp: (now | todate)
+              }]
+            }')
+
+          curl -fsS \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD" \
+            "$DISCORD_WEBHOOK_URL"
